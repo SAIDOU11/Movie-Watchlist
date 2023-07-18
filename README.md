@@ -2,4 +2,4 @@
 
 # Module 9 Scrimba Bootcamp. Working with APIs & Asinc JS
 
-- Movie Watchlist
+- Movie Watchlist (Solo Project)
