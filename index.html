@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Movie Watchlist</title>
+  </head>
+  <body>
+    <header>
+      <img src="images/movie-bg.png" alt="Background movie" />
+      <div class="header-text">
+        <h1>Find your film</h1>
+        <p><a href="watchlist.html" target="_blank">My Watchlist</a></p>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <div class="search">
+        <i class="icon fa-solid fa-magnifying-glass"></i>
+        <input id="input" type="text" placeholder="Search for a movie" />
+      </div>
+      <div class="button-div">
+        <button id="search">
+          <i class="search-icon fa-solid fa-arrow-up-short-wide"></i> Search
+        </button>
+      </div>
+    </div>
+    <div class="movies" id="movies">
+      <!-- <div class="movie-place">
+        <div class="movie-poster">
+          <img src="${data.Poster}" alt="" />
+        </div>
+      </div> -->
+      <!-- <div class="movie-data">
+        <div class="title-rate">
+          <h3>Title</h3>
+          <i class="icon fa-solid fa-star"></i>
+          <p>${data.Ratings.imdbRating}</p>
+        </div>
+        <div class="time-genre">
+          <p>${data.Runtime}</p>
+          <p>${data.Genre}</p>
+          <button class="watchlist-btn">+</button>
+          <p>Watchlist</p>
+        </div>
+        <div class="plot">
+          <p>${data.Plot}</p>
+        </div>
+      </div> -->
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
