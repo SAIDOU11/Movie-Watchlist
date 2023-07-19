@@ -1,13 +1,23 @@
 const moviesList = document.getElementById("movies");
 const searchMovie = document.getElementById("search");
 const watchlistBtn = document.getElementById("watchlist-btn");
-let postsArray = [];
+let moviesArray = [];
 let input = document.getElementById("input");
 const form = document.getElementById("search");
 let inputValue;
 
+function toLocalStorage(data) {
+  for (let movie of moviesArray) {
+    if (movie === data) {
+      localStorage.setItem("movies", JSON.stringify(movie));
+    }
+  }
+
+  console.log(JSON.parse(localStorage.getItem("movies")));
+}
+
 function render() {
-  moviesList.innerHTML = postsArray.map((movie) => {
+  moviesList.innerHTML = moviesArray.map((movie) => {
     return `
   <div class="movie-place">
       <div class="movie-poster">
@@ -22,10 +32,10 @@ function render() {
             <div class="time-genre">
               <p>${movie.Runtime}</p>
               <p>${movie.Genre}</p>
-              <div class="btn-watchlist"><button id="watchlist-btn" class="watchlist-btn">+</button>
-              <p class="watchlist">Watchlist</p></div>
-              
-            </div>
+                <div class="btn-watchlist">
+                  <button onclick="toLocalStorage()" id=${movie.Title} class="watchlist-btn">+</button>
+                  <p class="watchlist">Watchlist</p></div>
+                </div>
               <div class="plot">
                 <p>${movie.Plot}</p>
               </div>
@@ -33,9 +43,6 @@ function render() {
 </div>
     `;
   });
-  // watchlistBtn.addEventListener("click", function () {
-  //   console.log("movie");
-  // });
 }
 
 searchMovie.addEventListener("click", async () => {
@@ -46,12 +53,14 @@ searchMovie.addEventListener("click", async () => {
   const data = await response.json();
   console.log(inputValue);
   console.log(data);
-  postsArray.unshift(data);
-  localStorage.setItem("movies", data.Title);
-  console.log(postsArray);
+  moviesArray.unshift(data);
+  console.log(moviesArray);
   render();
+
   input.value = "";
 });
+
+// localStorage.clear();
 
 // async function deployApi() {
 //   const response = await fetch(
