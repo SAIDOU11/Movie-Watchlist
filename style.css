@@ -90,6 +90,10 @@ button {
 
 /* Movies */
 
+.movies {
+  margin-top: 4em;
+}
+
 .movie-icon {
   height: 450px;
   font-size: 4rem;
@@ -142,6 +146,7 @@ button {
   justify-content: space-between;
   gap: 0.8em;
   font-size: 0.8rem;
+  margin-bottom: 0.5em;
 }
 
 .title-rate .icon {
@@ -156,4 +161,12 @@ button {
   font-size: 1.5rem;
   border-radius: 50%;
   color: white;
+}
+
+.btn-watchlist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
 }
