@@ -62,23 +62,12 @@ searchMovie.addEventListener("click", async () => {
   document.getElementById(`${data.Title}`).addEventListener("click", () => {
     if (`${data.Title}`) {
       console.log("id is correct");
-      console.log(data);
-      console.log(watchlistMovies);
-      watchlistMovies = JSON.stringify(data);
-      console.log(watchlistMovies);
-      console.log(typeof watchlistMovies);
-      watchlistMovies = JSON.parse(watchlistMovies);
-      console.log(watchlistMovies);
-      console.log(typeof watchlistMovies);
+      localStorage.setItem("movies", JSON.stringify(moviesArray));
+
+      // let movieFromLocalStorage = JSON.parse(localStorage.getItem("movies"));
+      // console.log(movieFromLocalStorage);
     }
   });
 });
-
-// watchlistMovies = JSON.stringify(moviesArray);
-// console.log(watchlistMovies);
-// console.log(typeof watchlistMovies);
-// localStorage.setItem("movies", watchlistMovies);
-// console.log(localStorage.getItem("movies"));
-// console.log(JSON.parse(localStorage.getItem("movies")));
 
 // localStorage.clear();
