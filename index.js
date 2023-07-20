@@ -1,22 +1,24 @@
 const moviesList = document.getElementById("movies");
+
 const searchMovie = document.getElementById("search");
 const watchlistBtn = document.getElementById("watchlist-btn");
 let moviesArray = [];
+let watchlistMovies = [];
 let input = document.getElementById("input");
 const form = document.getElementById("search");
 let inputValue;
 
-// document.
+// function saveToLocalStorage() {
+//   watchlistMovies = JSON.stringify(moviesArray);
+//   console.log(watchlistMovies);
+//   console.log(typeof watchlistMovies);
+//   localStorage.setItem("movies", watchlistMovies);
+//   console.log(localStorage.getItem("movies"));
+//   console.log(JSON.parse(localStorage.getItem("movies")));
+// }
 
-function saveToLocalStorage() {
-  // if (localStorage.getItem("movies") == null) {
-  //   for (let movie of moviesArray) {
-  //     localStorage.setItem("movies", JSON.stringify(movie));
-  //   }
-  // }
-  // console.log(localStorage.getItem("movies"));
-  // console.log(JSON.parse(localStorage.getItem("movies")));
-}
+// removeFromWatchlist(){}
+// Remove item from localstorage
 
 function render() {
   moviesList.innerHTML = moviesArray.map((movie) => {
@@ -35,7 +37,7 @@ function render() {
                 <p>${movie.Runtime}</p>
                 <p>${movie.Genre}</p>
                   <div class="btn-watchlist">
-                    <button onclick="saveToLocalStorage()" id=${movie.Title} class="watchlist-btn">+</button>
+                    <button id=${movie.Title} class="watchlist-btn">+</button>
                     <p class="watchlist">Watchlist</p></div>
                   </div>
                 <div class="plot">
@@ -53,11 +55,30 @@ searchMovie.addEventListener("click", async () => {
     `http://www.omdbapi.com/?i=tt3896198&apikey=7f17fb1a&t=${inputValue}`
   );
   const data = await response.json();
-  console.log(data);
   moviesArray.unshift(data);
   console.log(moviesArray);
   render();
   input.value = "";
+  document.getElementById(`${data.Title}`).addEventListener("click", () => {
+    if (`${data.Title}`) {
+      console.log("id is correct");
+      console.log(data);
+      console.log(watchlistMovies);
+      watchlistMovies = JSON.stringify(data);
+      console.log(watchlistMovies);
+      console.log(typeof watchlistMovies);
+      watchlistMovies = JSON.parse(watchlistMovies);
+      console.log(watchlistMovies);
+      console.log(typeof watchlistMovies);
+    }
+  });
 });
+
+// watchlistMovies = JSON.stringify(moviesArray);
+// console.log(watchlistMovies);
+// console.log(typeof watchlistMovies);
+// localStorage.setItem("movies", watchlistMovies);
+// console.log(localStorage.getItem("movies"));
+// console.log(JSON.parse(localStorage.getItem("movies")));
 
 // localStorage.clear();
