@@ -1,7 +1,13 @@
-let movieFromLocalStorage = JSON.parse(localStorage.getItem("movies"));
+const moviesWatchList = document.getElementById("movies-wl");
+const movieFromLocalStorage = JSON.parse(localStorage.getItem("movies"));
+let storedMovies = [];
 console.log(movieFromLocalStorage);
 
-const moviesWatchList = document.getElementById("movies-wl");
+if (movieFromLocalStorage) {
+  storedMovies = movieFromLocalStorage;
+  console.log(movieFromLocalStorage);
+  renderWatchlist();
+}
 
 function renderWatchlist() {
   moviesWatchList.innerHTML = movieFromLocalStorage.map((movie) => {
@@ -31,4 +37,8 @@ function renderWatchlist() {
       `;
   });
 }
-renderWatchlist();
+
+function removeFromWatchlist() {
+  localStorage.clear();
+  location.reload();
+}

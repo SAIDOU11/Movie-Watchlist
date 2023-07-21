@@ -1,24 +1,11 @@
 const moviesList = document.getElementById("movies");
-
 const searchMovie = document.getElementById("search");
 const watchlistBtn = document.getElementById("watchlist-btn");
+const input = document.getElementById("input");
 let moviesArray = [];
 let watchlistMovies = [];
-let input = document.getElementById("input");
-const form = document.getElementById("search");
+let storedFilm = [];
 let inputValue;
-
-// function saveToLocalStorage() {
-//   watchlistMovies = JSON.stringify(moviesArray);
-//   console.log(watchlistMovies);
-//   console.log(typeof watchlistMovies);
-//   localStorage.setItem("movies", watchlistMovies);
-//   console.log(localStorage.getItem("movies"));
-//   console.log(JSON.parse(localStorage.getItem("movies")));
-// }
-
-// removeFromWatchlist(){}
-// Remove item from localstorage
 
 function render() {
   moviesList.innerHTML = moviesArray.map((movie) => {
@@ -37,7 +24,7 @@ function render() {
                 <p>${movie.Runtime}</p>
                 <p>${movie.Genre}</p>
                   <div class="btn-watchlist">
-                    <button id=${movie.Title} class="watchlist-btn">+</button>
+                    <button onclick="saveToWatchList()" data-id=${movie.Title} id=${movie.Title} class="watchlist-btn">+</button>
                     <p class="watchlist">Watchlist</p></div>
                   </div>
                 <div class="plot">
@@ -56,18 +43,13 @@ searchMovie.addEventListener("click", async () => {
   );
   const data = await response.json();
   moviesArray.unshift(data);
-  console.log(moviesArray);
   render();
   input.value = "";
-  document.getElementById(`${data.Title}`).addEventListener("click", () => {
-    if (`${data.Title}`) {
-      console.log("id is correct");
-      localStorage.setItem("movies", JSON.stringify(moviesArray));
-
-      // let movieFromLocalStorage = JSON.parse(localStorage.getItem("movies"));
-      // console.log(movieFromLocalStorage);
-    }
-  });
 });
 
-// localStorage.clear();
+function saveToWatchList() {
+  moviesArray.filter((film) => {
+    storedFilm.push(film);
+    return localStorage.setItem("movies", JSON.stringify(storedFilm));
+  });
+}
