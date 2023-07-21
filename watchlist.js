@@ -1,11 +1,9 @@
 const moviesWatchList = document.getElementById("movies-wl");
 const movieFromLocalStorage = JSON.parse(localStorage.getItem("movies"));
 let storedMovies = [];
-console.log(movieFromLocalStorage);
 
 if (movieFromLocalStorage) {
   storedMovies = movieFromLocalStorage;
-  console.log(movieFromLocalStorage);
   renderWatchlist();
 }
 

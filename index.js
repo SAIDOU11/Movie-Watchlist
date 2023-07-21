@@ -36,6 +36,14 @@ function render() {
   });
 }
 
+function getItem(key) {
+  localStorage.getItem(key);
+}
+
+function setItem(key, value) {
+  localStorage.setItem(key, value);
+}
+
 searchMovie.addEventListener("click", async () => {
   inputValue = input.value;
   const response = await fetch(
